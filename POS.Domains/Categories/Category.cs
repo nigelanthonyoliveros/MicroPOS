@@ -23,12 +23,12 @@ namespace POS.Domains.Categories
         [StringLength(100,MinimumLength =10)]
         public string Description { get; set; }
 
-        public Category(string Name, string Description)
+        public Category(string Name = "Unnamed Category", string Description = "")
         {
-                this.Name = Name ?? "Unnamed Category";
-                this.Description = Description?? string.Empty;
+            this.Name = Name;
+                this.Description = Description;
         }
-
+       
         public List<Product> Products { get; set; } = new List<Product>();
 
 

@@ -3,6 +3,7 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 using Microsoft.Extensions.Logging;
 using POS.Contracts;
+using POS.Domains.Categories;
 using POS.Services;
 using System.Configuration;
 
@@ -12,8 +13,10 @@ namespace POS
     {
         private readonly ILogger<MainForm> _logger;
         private readonly IPOSService pOSService;
+        private readonly ApplicationDBContext dBContext;
+        private readonly ICategoriesService categoriesService;
 
-        public MainForm(ILogger<MainForm> logger, IPOSService pOSService)
+        public MainForm(ILogger<MainForm> logger, IPOSService pOSService, ApplicationDBContext dBContext, ICategoriesService categoriesService)
         {
             InitializeComponent();
 
@@ -23,9 +26,8 @@ namespace POS
 
             this._logger = logger;
             this.pOSService=pOSService;
-
-
-          
+            this.dBContext=dBContext;
+            this.categoriesService=categoriesService;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -49,6 +51,16 @@ namespace POS
 
             materialProgressBar2.Value = Convert.ToInt32(randomvalue2);
             #endregion
+
+
+            categoriesService.Add(new Category() { Name = "Dry goods", Description = "RTW Dry goods product" });
+
+            //dBContext.Categories.Add(
+            //   
+                
+            //    );
+            //dBContext.SaveChanges();
+
 
         }
 

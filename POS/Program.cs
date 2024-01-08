@@ -37,7 +37,7 @@ namespace POS
 
 
     }
-        public static IServiceProvider ServiceProvider { get; private set; }
+        public static IServiceProvider? ServiceProvider { get; private set; }
 
 
         /// <summary>
@@ -63,7 +63,10 @@ namespace POS
                         options.UseSqlServer(@"Server=GEEOLIVEROS\SQLEXPRESS;Database=microPOSDB;Trusted_Connection=True;");
                     });
                     #endregion
+
+
                     services.AddScoped<IPOSService, POSService>();
+                    services.AddScoped<ICategoriesService, CategoriesService>();
 
                     services.AddTransient<MainForm>();
                 });

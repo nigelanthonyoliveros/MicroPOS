@@ -12,3 +12,4 @@ C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS.Domains\obj\Debug\net6.0\
 C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS.Domains\obj\Debug\net6.0\POS.Domains.pdb
 C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS.Domains\obj\Debug\net6.0\POS.Domains.genruntimeconfig.cache
 C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS.Domains\obj\Debug\net6.0\ref\POS.Domains.dll
+C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS.Domains\obj\Debug\net6.0\POS.Domains.sourcelink.json
