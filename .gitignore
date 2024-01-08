@@ -1,2 +1,3 @@
 .vs
-/POS/obj/Debug/net6.0-windows/
+/POS/obj
+/POS/bin
