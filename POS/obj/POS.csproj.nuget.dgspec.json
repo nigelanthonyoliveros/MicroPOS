@@ -146,10 +146,6 @@
             "Microsoft.Extensions.Logging": {
               "target": "Package",
               "version": "[6.0.0, )"
-            },
-            "Nevron.Nov.Chart": {
-              "target": "Package",
-              "version": "[23.10.13.12, )"
             }
           },
           "imports": [

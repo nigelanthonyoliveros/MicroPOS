@@ -28,7 +28,8 @@ namespace POS.Domains.Categories
             this.Name = Name;
                 this.Description = Description;
         }
-       
+        [Column("DateCreated")]
+        public DateTime Created { get; set; }
         public List<Product> Products { get; set; } = new List<Product>();
 
 

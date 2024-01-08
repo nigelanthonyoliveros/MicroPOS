@@ -22,7 +22,6 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
-    <PackageReference Include="Nevron.Nov.Chart" Version="23.10.13.12" />
   </ItemGroup>
 
   <ItemGroup>

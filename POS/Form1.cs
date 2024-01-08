@@ -53,13 +53,7 @@ namespace POS
             #endregion
 
 
-            categoriesService.Add(new Category() { Name = "Dry goods", Description = "RTW Dry goods product" });
-
-            //dBContext.Categories.Add(
-            //   
-                
-            //    );
-            //dBContext.SaveChanges();
+            categoriesService.Add(new Category() { Name = "Perishable", Description = "Perishable items" });
 
 
         }

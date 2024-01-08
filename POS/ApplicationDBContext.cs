@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using POS.Domains.Categories;
 using POS.Domains.Items;
 using POS.Domains.Users;
@@ -20,6 +21,16 @@ namespace POS
             Categories = Set<Category>();
             Products = Set<Product>();
             Rights = Set<Right>();
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Category>()
+                 .Property(c => c.Created)
+                 //.ValueGeneratedOnAddOrUpdate()
+                 //.Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Save)
+                 .HasDefaultValueSql("getdate()");
+
+
         }
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }

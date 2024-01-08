@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("POS.Domains")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd950a4a12f4b302d11b0cce11416c1a0d638a69")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1f009d02744083b898bb31e0da65340d5f28af1")]
 [assembly: System.Reflection.AssemblyProductAttribute("POS.Domains")]
 [assembly: System.Reflection.AssemblyTitleAttribute("POS.Domains")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

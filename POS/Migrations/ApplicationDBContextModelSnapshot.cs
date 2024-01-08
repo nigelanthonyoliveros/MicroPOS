@@ -28,6 +28,12 @@ namespace POS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DateCreated")
+                        .HasDefaultValueSql("getdate()");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(100)
