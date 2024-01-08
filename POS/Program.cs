@@ -30,63 +30,43 @@ namespace POS
             ServiceProvider = host.Services;
             Application.Run(ServiceProvider.GetRequiredService<MainForm>());
 
-            #region Logging Service
-            services.AddLogging(
-                                           log =>
-                                           {
-                                               log.AddConsole();
-                                               log.SetMinimumLevel(LogLevel.Trace);
-                                           });
-            #endregion
-            #region DB Context
-            services.AddDbContext<ApplicationDBContext>(options =>
-            {
-                options.UseSqlServer(@"Server=GEEOLIVEROS\\SQLEXPRESS;Database=microPOSDB;Trusted_Connection=True;");
-            });
-            #endregion
+           
 
 
-            //services.AddScoped<IPOSService, POSService>();
-
-            //services.AddScoped<MainForm>(); // Replace Form1 with your main form class
-
-
-
-
-
-            ////using ( var serviceScope = host.Services.CreateScope() )
-            ////{
-            ////    var serviceProvider = serviceScope.ServiceProvider;
-            ////     var bootstrap = host.Services.GetRequiredService<MainForm>(); //sets the starting form
-
-            ////    Application.Run(bootstrap);
-
-
-            ////}
-            //// Build the service provider
-            //using (var serviceProvider = services.BuildServiceProvider())
-            //{
-            //    // Resolve the main form and run the application
-            //    Application.Run(serviceProvider.GetRequiredService<MainForm>());
-
-
-             public static IServiceProvider ServiceProvider { get; private set; }
-
-
-                /// <summary>
-                /// Create a host builder to build the service provider
-                /// </summary>
-                /// <returns></returns>
-                static IHostBuilder CreateHostBuilder()
-                        {
-                            return Host.CreateDefaultBuilder()
-                                .ConfigureServices((context, services) => {
-                                    //services.AddScoped<TInterface, TImplementation>();
-                                    services.AddTransient<MainForm>();
-                                });
-                        }
+            
 
 
     }
+        public static IServiceProvider ServiceProvider { get; private set; }
+
+
+        /// <summary>
+        /// Create a host builder to build the service provider
+        /// </summary>
+        /// <returns></returns>
+        static IHostBuilder CreateHostBuilder()
+        {
+            return Host.CreateDefaultBuilder()
+                .ConfigureServices((context, services) => {
+                    //services.AddScoped<TInterface, TImplementation>();
+                    #region Logging Service
+                    services.AddLogging(
+                                                   log =>
+                                                   {
+                                                       log.AddConsole();
+                                                       log.SetMinimumLevel(LogLevel.Trace);
+                                                   });
+                    #endregion
+                    #region DB Context
+                    services.AddDbContext<ApplicationDBContext>(options =>
+                    {
+                        options.UseSqlServer(@"Server=GEEOLIVEROS\SQLEXPRESS;Database=microPOSDB;Trusted_Connection=True;");
+                    });
+                    #endregion
+                    services.AddScoped<IPOSService, POSService>();
+
+                    services.AddTransient<MainForm>();
+                });
+        }
     }
 }

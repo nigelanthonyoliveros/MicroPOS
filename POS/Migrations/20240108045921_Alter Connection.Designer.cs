@@ -12,8 +12,8 @@ using POS;
 namespace POS.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240108040613_Tes")]
-    partial class Tes
+    [Migration("20240108045921_Alter Connection")]
+    partial class AlterConnection
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

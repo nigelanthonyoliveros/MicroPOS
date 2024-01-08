@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace POS.Migrations
 {
-    public partial class initialmigration : Migration
+    public partial class AlterConnection : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
