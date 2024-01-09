@@ -76,3 +76,7 @@ C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS\bin\Debug\net6.0-windows\
 C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS\bin\Debug\net6.0-windows\WinForms.DataVisualization.dll
 C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS\obj\Debug\net6.0-windows\POS.Properties.Resources.resources
 C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS\obj\Debug\net6.0-windows\POS.Loading.resources
+C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS\obj\Debug\net6.0-windows\POS.Utils.UserConfirmMessageBox.resources
+C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS\bin\Debug\net6.0-windows\MaterialDesignColors.dll
+C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS\bin\Debug\net6.0-windows\MaterialDesignThemes.Wpf.dll
+C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS\bin\Debug\net6.0-windows\Microsoft.Xaml.Behaviors.dll

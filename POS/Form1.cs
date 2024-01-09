@@ -5,7 +5,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.VisualBasic;
 using POS.Contracts;
 using POS.Domains.Categories;
+using POS.Domains.Items;
 using POS.Services;
+using POS.Utils;
 using System.Configuration;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -17,6 +19,7 @@ namespace POS
         private readonly IPOSService pOSService;
         private readonly ApplicationDBContext dBContext;
         private readonly ICategoryRepository _categoryRepository;
+        private readonly IProductRepository productRepository;
         Loading loadingSplash = new Loading()
         {
             Dock = DockStyle.Fill,
@@ -24,7 +27,7 @@ namespace POS
             TopLevel = true
         };
 
-        public MainForm(ILogger<MainForm> logger, IPOSService pOSService, ApplicationDBContext dBContext, ICategoryRepository categoriesRepository)
+        public MainForm(ILogger<MainForm> logger, IPOSService pOSService, ApplicationDBContext dBContext, ICategoryRepository categoriesRepository, IProductRepository productRepository)
         {
             InitializeComponent();
 
@@ -36,14 +39,17 @@ namespace POS
             this.pOSService=pOSService;
             this.dBContext=dBContext;
             this._categoryRepository=categoriesRepository;
+            this.productRepository=productRepository;
         }
 
         private async void Form1_Load(object sender, EventArgs e)
         {
+           
             await Form1_LoadAsync(sender, e);
         }
         private async Task Form1_LoadAsync(object sender, EventArgs e)
         {
+            this.DashboardTabControl.Alignment = TabAlignment.Top;
             _logger.LogTrace("Form1 has been loaded");
             #region Random Value 
 
@@ -52,7 +58,7 @@ namespace POS
             //materialProgressBar1.MarqueeAnimationSpeed = 1;
 
 
-
+            
             var randomvalue = (double)new Random().Next(1, 10000);
             var randomvalue2 = (double)new Random().Next(1, 10000);
 
@@ -66,7 +72,7 @@ namespace POS
             #endregion
 
 
-          await  _categoryRepository.Add(new Category() { Name = "Perishable", Description = "Perishable items" });
+            await _categoryRepository.Add(new Category() { Name = "Perishable", Description = "Perishable items" });
 
 
 
@@ -98,10 +104,13 @@ namespace POS
             // Add the series to the chart
             SalesChart.Series.Add(series);
             SalesChart.Series.Add(series1);
-         
+
             categorycb.DataSource = await _categoryRepository.GetAllCategory();
+            
             categorycb.DisplayMember = "Name";
             categorycb.ValueMember = "CategoryID";
+            categorycb.SelectedText = "Category";
+            categorycb.SelectedValue = "00000000-0000-0000-0000-000000000000";
         }
 
 
@@ -130,6 +139,33 @@ namespace POS
             loadingSplash.Hide();
         }
 
-        
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+            UserConfirmMessageBox uc = new UserConfirmMessageBox("Are you sure you want to add this product?");
+
+            Product product = new Product {
+                ProductName = txtProductName.Text,
+                ProductDescription = txtProductDescription.Text,
+                Available= checkBoxIsAvailable.Checked,
+                ProductPrice = Convert.ToDecimal(txtPrice.Text),
+                SKU = txtSKU.Text,
+                CategoryID = new Guid(categorycb.SelectedValue.ToString() ?? ""),
+            };
+
+            productRepository.Add(product); 
+        }
+
+        private void categorycb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(categorycb.SelectedValue is null)
+            {
+                CategoryIDbind.Text = string.Empty;
+            }
+            else
+            {
+                CategoryIDbind.Text = categorycb.SelectedValue.ToString();
+            }
+            
+        }
     }
 }

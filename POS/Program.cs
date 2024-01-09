@@ -62,6 +62,7 @@ namespace POS
 
                     services.AddScoped<IPOSService, POSService>();
                     services.AddScoped<ICategoryRepository, CategoryRepository>();
+                    services.AddScoped<IProductRepository, ProductRepository>();
 
                     services.AddTransient<MainForm>();
                 });

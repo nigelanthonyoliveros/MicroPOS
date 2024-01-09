@@ -47,15 +47,16 @@
             dataGridView1 = new DataGridView();
             materialMaskedTextBox1 = new MaterialSkin.Controls.MaterialMaskedTextBox();
             materialCard3 = new MaterialSkin.Controls.MaterialCard();
+            CategoryIDbind = new MaterialSkin.Controls.MaterialLabel();
             materialFloatingActionButton1 = new MaterialSkin.Controls.MaterialFloatingActionButton();
             imageList1 = new ImageList(components);
             materialButton2 = new MaterialSkin.Controls.MaterialButton();
             materialButton1 = new MaterialSkin.Controls.MaterialButton();
-            materialTextBox23 = new MaterialSkin.Controls.MaterialTextBox2();
-            materialTextBox22 = new MaterialSkin.Controls.MaterialTextBox2();
-            materialMultiLineTextBox21 = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
-            materialTextBox21 = new MaterialSkin.Controls.MaterialTextBox2();
-            materialCheckbox1 = new MaterialSkin.Controls.MaterialCheckbox();
+            txtPrice = new MaterialSkin.Controls.MaterialTextBox2();
+            txtSKU = new MaterialSkin.Controls.MaterialTextBox2();
+            txtProductDescription = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
+            txtProductName = new MaterialSkin.Controls.MaterialTextBox2();
+            checkBoxIsAvailable = new MaterialSkin.Controls.MaterialCheckbox();
             categorycb = new MaterialSkin.Controls.MaterialComboBox();
             materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             salesTab = new TabPage();
@@ -75,7 +76,7 @@
             // 
             // DashboardTabControl
             // 
-            DashboardTabControl.Appearance = TabAppearance.FlatButtons;
+            DashboardTabControl.Appearance = TabAppearance.Buttons;
             DashboardTabControl.CausesValidation = false;
             DashboardTabControl.Controls.Add(homeTab);
             DashboardTabControl.Controls.Add(inventoryTab);
@@ -294,14 +295,15 @@
             // materialCard3
             // 
             materialCard3.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard3.Controls.Add(CategoryIDbind);
             materialCard3.Controls.Add(materialFloatingActionButton1);
             materialCard3.Controls.Add(materialButton2);
             materialCard3.Controls.Add(materialButton1);
-            materialCard3.Controls.Add(materialTextBox23);
-            materialCard3.Controls.Add(materialTextBox22);
-            materialCard3.Controls.Add(materialMultiLineTextBox21);
-            materialCard3.Controls.Add(materialTextBox21);
-            materialCard3.Controls.Add(materialCheckbox1);
+            materialCard3.Controls.Add(txtPrice);
+            materialCard3.Controls.Add(txtSKU);
+            materialCard3.Controls.Add(txtProductDescription);
+            materialCard3.Controls.Add(txtProductName);
+            materialCard3.Controls.Add(checkBoxIsAvailable);
             materialCard3.Controls.Add(categorycb);
             materialCard3.Controls.Add(materialLabel2);
             materialCard3.Depth = 0;
@@ -313,6 +315,18 @@
             materialCard3.Padding = new Padding(14, 13, 14, 13);
             materialCard3.Size = new Size(483, 577);
             materialCard3.TabIndex = 0;
+            // 
+            // CategoryIDbind
+            // 
+            CategoryIDbind.AutoSize = true;
+            CategoryIDbind.Depth = 0;
+            CategoryIDbind.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            CategoryIDbind.Location = new Point(114, 9);
+            CategoryIDbind.MouseState = MaterialSkin.MouseState.HOVER;
+            CategoryIDbind.Name = "CategoryIDbind";
+            CategoryIDbind.Size = new Size(107, 19);
+            CategoryIDbind.TabIndex = 11;
+            CategoryIDbind.Text = "materialLabel3";
             // 
             // materialFloatingActionButton1
             // 
@@ -378,143 +392,144 @@
             materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             materialButton1.UseAccentColor = true;
             materialButton1.UseVisualStyleBackColor = true;
+            materialButton1.Click += materialButton1_Click;
             // 
-            // materialTextBox23
+            // txtPrice
             // 
-            materialTextBox23.AnimateReadOnly = false;
-            materialTextBox23.BackgroundImageLayout = ImageLayout.None;
-            materialTextBox23.CharacterCasing = CharacterCasing.Normal;
-            materialTextBox23.Depth = 0;
-            materialTextBox23.ErrorMessage = "Price are invalid";
-            materialTextBox23.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox23.HelperText = "Please enter the products price, for example: 232.19";
-            materialTextBox23.HideSelection = true;
-            materialTextBox23.Hint = "Price";
-            materialTextBox23.LeadingIcon = null;
-            materialTextBox23.Location = new Point(34, 376);
-            materialTextBox23.MaxLength = 32767;
-            materialTextBox23.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox23.Name = "materialTextBox23";
-            materialTextBox23.PasswordChar = '\0';
-            materialTextBox23.PrefixSuffixText = null;
-            materialTextBox23.ReadOnly = false;
-            materialTextBox23.RightToLeft = RightToLeft.No;
-            materialTextBox23.SelectedText = "";
-            materialTextBox23.SelectionLength = 0;
-            materialTextBox23.SelectionStart = 0;
-            materialTextBox23.ShortcutsEnabled = true;
-            materialTextBox23.ShowAssistiveText = true;
-            materialTextBox23.Size = new Size(216, 52);
-            materialTextBox23.TabIndex = 7;
-            materialTextBox23.TabStop = false;
-            materialTextBox23.TextAlign = HorizontalAlignment.Left;
-            materialTextBox23.TrailingIcon = null;
-            materialTextBox23.UseSystemPasswordChar = false;
-            materialTextBox23.UseTallSize = false;
+            txtPrice.AnimateReadOnly = false;
+            txtPrice.BackgroundImageLayout = ImageLayout.None;
+            txtPrice.CharacterCasing = CharacterCasing.Normal;
+            txtPrice.Depth = 0;
+            txtPrice.ErrorMessage = "Price are invalid";
+            txtPrice.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtPrice.HelperText = "Please enter the products price, for example: 232.19";
+            txtPrice.HideSelection = true;
+            txtPrice.Hint = "Price";
+            txtPrice.LeadingIcon = null;
+            txtPrice.Location = new Point(34, 376);
+            txtPrice.MaxLength = 32767;
+            txtPrice.MouseState = MaterialSkin.MouseState.OUT;
+            txtPrice.Name = "txtPrice";
+            txtPrice.PasswordChar = '\0';
+            txtPrice.PrefixSuffixText = null;
+            txtPrice.ReadOnly = false;
+            txtPrice.RightToLeft = RightToLeft.No;
+            txtPrice.SelectedText = "";
+            txtPrice.SelectionLength = 0;
+            txtPrice.SelectionStart = 0;
+            txtPrice.ShortcutsEnabled = true;
+            txtPrice.ShowAssistiveText = true;
+            txtPrice.Size = new Size(216, 52);
+            txtPrice.TabIndex = 7;
+            txtPrice.TabStop = false;
+            txtPrice.TextAlign = HorizontalAlignment.Left;
+            txtPrice.TrailingIcon = null;
+            txtPrice.UseSystemPasswordChar = false;
+            txtPrice.UseTallSize = false;
             // 
-            // materialTextBox22
+            // txtSKU
             // 
-            materialTextBox22.AnimateReadOnly = false;
-            materialTextBox22.BackgroundImageLayout = ImageLayout.None;
-            materialTextBox22.CharacterCasing = CharacterCasing.Normal;
-            materialTextBox22.Depth = 0;
-            materialTextBox22.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox22.HideSelection = true;
-            materialTextBox22.Hint = "SKU";
-            materialTextBox22.LeadingIcon = null;
-            materialTextBox22.Location = new Point(34, 131);
-            materialTextBox22.MaxLength = 32767;
-            materialTextBox22.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox22.Name = "materialTextBox22";
-            materialTextBox22.PasswordChar = '\0';
-            materialTextBox22.PrefixSuffixText = null;
-            materialTextBox22.ReadOnly = false;
-            materialTextBox22.RightToLeft = RightToLeft.No;
-            materialTextBox22.SelectedText = "";
-            materialTextBox22.SelectionLength = 0;
-            materialTextBox22.SelectionStart = 0;
-            materialTextBox22.ShortcutsEnabled = true;
-            materialTextBox22.Size = new Size(216, 36);
-            materialTextBox22.TabIndex = 6;
-            materialTextBox22.TabStop = false;
-            materialTextBox22.TextAlign = HorizontalAlignment.Left;
-            materialTextBox22.TrailingIcon = null;
-            materialTextBox22.UseSystemPasswordChar = false;
-            materialTextBox22.UseTallSize = false;
+            txtSKU.AnimateReadOnly = false;
+            txtSKU.BackgroundImageLayout = ImageLayout.None;
+            txtSKU.CharacterCasing = CharacterCasing.Normal;
+            txtSKU.Depth = 0;
+            txtSKU.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtSKU.HideSelection = true;
+            txtSKU.Hint = "SKU";
+            txtSKU.LeadingIcon = null;
+            txtSKU.Location = new Point(34, 131);
+            txtSKU.MaxLength = 32767;
+            txtSKU.MouseState = MaterialSkin.MouseState.OUT;
+            txtSKU.Name = "txtSKU";
+            txtSKU.PasswordChar = '\0';
+            txtSKU.PrefixSuffixText = null;
+            txtSKU.ReadOnly = false;
+            txtSKU.RightToLeft = RightToLeft.No;
+            txtSKU.SelectedText = "";
+            txtSKU.SelectionLength = 0;
+            txtSKU.SelectionStart = 0;
+            txtSKU.ShortcutsEnabled = true;
+            txtSKU.Size = new Size(216, 36);
+            txtSKU.TabIndex = 6;
+            txtSKU.TabStop = false;
+            txtSKU.TextAlign = HorizontalAlignment.Left;
+            txtSKU.TrailingIcon = null;
+            txtSKU.UseSystemPasswordChar = false;
+            txtSKU.UseTallSize = false;
             // 
-            // materialMultiLineTextBox21
+            // txtProductDescription
             // 
-            materialMultiLineTextBox21.AnimateReadOnly = false;
-            materialMultiLineTextBox21.BackgroundImageLayout = ImageLayout.None;
-            materialMultiLineTextBox21.CharacterCasing = CharacterCasing.Normal;
-            materialMultiLineTextBox21.Depth = 0;
-            materialMultiLineTextBox21.HideSelection = true;
-            materialMultiLineTextBox21.Hint = "Product Description";
-            materialMultiLineTextBox21.Location = new Point(34, 232);
-            materialMultiLineTextBox21.MaxLength = 32767;
-            materialMultiLineTextBox21.MouseState = MaterialSkin.MouseState.OUT;
-            materialMultiLineTextBox21.Name = "materialMultiLineTextBox21";
-            materialMultiLineTextBox21.PasswordChar = '\0';
-            materialMultiLineTextBox21.ReadOnly = false;
-            materialMultiLineTextBox21.ScrollBars = ScrollBars.Vertical;
-            materialMultiLineTextBox21.SelectedText = "";
-            materialMultiLineTextBox21.SelectionLength = 0;
-            materialMultiLineTextBox21.SelectionStart = 0;
-            materialMultiLineTextBox21.ShortcutsEnabled = true;
-            materialMultiLineTextBox21.Size = new Size(433, 125);
-            materialMultiLineTextBox21.TabIndex = 5;
-            materialMultiLineTextBox21.TabStop = false;
-            materialMultiLineTextBox21.TextAlign = HorizontalAlignment.Left;
-            materialMultiLineTextBox21.UseSystemPasswordChar = false;
+            txtProductDescription.AnimateReadOnly = false;
+            txtProductDescription.BackgroundImageLayout = ImageLayout.None;
+            txtProductDescription.CharacterCasing = CharacterCasing.Normal;
+            txtProductDescription.Depth = 0;
+            txtProductDescription.HideSelection = true;
+            txtProductDescription.Hint = "Product Description";
+            txtProductDescription.Location = new Point(34, 232);
+            txtProductDescription.MaxLength = 32767;
+            txtProductDescription.MouseState = MaterialSkin.MouseState.OUT;
+            txtProductDescription.Name = "txtProductDescription";
+            txtProductDescription.PasswordChar = '\0';
+            txtProductDescription.ReadOnly = false;
+            txtProductDescription.ScrollBars = ScrollBars.Vertical;
+            txtProductDescription.SelectedText = "";
+            txtProductDescription.SelectionLength = 0;
+            txtProductDescription.SelectionStart = 0;
+            txtProductDescription.ShortcutsEnabled = true;
+            txtProductDescription.Size = new Size(433, 125);
+            txtProductDescription.TabIndex = 5;
+            txtProductDescription.TabStop = false;
+            txtProductDescription.TextAlign = HorizontalAlignment.Left;
+            txtProductDescription.UseSystemPasswordChar = false;
             // 
-            // materialTextBox21
+            // txtProductName
             // 
-            materialTextBox21.AnimateReadOnly = false;
-            materialTextBox21.BackgroundImageLayout = ImageLayout.None;
-            materialTextBox21.CharacterCasing = CharacterCasing.Normal;
-            materialTextBox21.Depth = 0;
-            materialTextBox21.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox21.HideSelection = true;
-            materialTextBox21.Hint = "Product Name";
-            materialTextBox21.LeadingIcon = null;
-            materialTextBox21.Location = new Point(34, 173);
-            materialTextBox21.MaxLength = 32767;
-            materialTextBox21.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox21.Name = "materialTextBox21";
-            materialTextBox21.PasswordChar = '\0';
-            materialTextBox21.PrefixSuffixText = null;
-            materialTextBox21.ReadOnly = false;
-            materialTextBox21.RightToLeft = RightToLeft.No;
-            materialTextBox21.SelectedText = "";
-            materialTextBox21.SelectionLength = 0;
-            materialTextBox21.SelectionStart = 0;
-            materialTextBox21.ShortcutsEnabled = true;
-            materialTextBox21.Size = new Size(433, 36);
-            materialTextBox21.TabIndex = 4;
-            materialTextBox21.TabStop = false;
-            materialTextBox21.TextAlign = HorizontalAlignment.Left;
-            materialTextBox21.TrailingIcon = null;
-            materialTextBox21.UseSystemPasswordChar = false;
-            materialTextBox21.UseTallSize = false;
+            txtProductName.AnimateReadOnly = false;
+            txtProductName.BackgroundImageLayout = ImageLayout.None;
+            txtProductName.CharacterCasing = CharacterCasing.Normal;
+            txtProductName.Depth = 0;
+            txtProductName.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtProductName.HideSelection = true;
+            txtProductName.Hint = "Product Name";
+            txtProductName.LeadingIcon = null;
+            txtProductName.Location = new Point(34, 173);
+            txtProductName.MaxLength = 32767;
+            txtProductName.MouseState = MaterialSkin.MouseState.OUT;
+            txtProductName.Name = "txtProductName";
+            txtProductName.PasswordChar = '\0';
+            txtProductName.PrefixSuffixText = null;
+            txtProductName.ReadOnly = false;
+            txtProductName.RightToLeft = RightToLeft.No;
+            txtProductName.SelectedText = "";
+            txtProductName.SelectionLength = 0;
+            txtProductName.SelectionStart = 0;
+            txtProductName.ShortcutsEnabled = true;
+            txtProductName.Size = new Size(433, 36);
+            txtProductName.TabIndex = 4;
+            txtProductName.TabStop = false;
+            txtProductName.TextAlign = HorizontalAlignment.Left;
+            txtProductName.TrailingIcon = null;
+            txtProductName.UseSystemPasswordChar = false;
+            txtProductName.UseTallSize = false;
             // 
-            // materialCheckbox1
+            // checkBoxIsAvailable
             // 
-            materialCheckbox1.AutoSize = true;
-            materialCheckbox1.Checked = true;
-            materialCheckbox1.CheckState = CheckState.Checked;
-            materialCheckbox1.Depth = 0;
-            materialCheckbox1.FlatStyle = FlatStyle.Flat;
-            materialCheckbox1.Location = new Point(342, 56);
-            materialCheckbox1.Margin = new Padding(0);
-            materialCheckbox1.MouseLocation = new Point(-1, -1);
-            materialCheckbox1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialCheckbox1.Name = "materialCheckbox1";
-            materialCheckbox1.ReadOnly = false;
-            materialCheckbox1.Ripple = true;
-            materialCheckbox1.Size = new Size(100, 37);
-            materialCheckbox1.TabIndex = 3;
-            materialCheckbox1.Text = "Available";
-            materialCheckbox1.UseVisualStyleBackColor = true;
+            checkBoxIsAvailable.AutoSize = true;
+            checkBoxIsAvailable.Checked = true;
+            checkBoxIsAvailable.CheckState = CheckState.Checked;
+            checkBoxIsAvailable.Depth = 0;
+            checkBoxIsAvailable.FlatStyle = FlatStyle.Flat;
+            checkBoxIsAvailable.Location = new Point(342, 56);
+            checkBoxIsAvailable.Margin = new Padding(0);
+            checkBoxIsAvailable.MouseLocation = new Point(-1, -1);
+            checkBoxIsAvailable.MouseState = MaterialSkin.MouseState.HOVER;
+            checkBoxIsAvailable.Name = "checkBoxIsAvailable";
+            checkBoxIsAvailable.ReadOnly = false;
+            checkBoxIsAvailable.Ripple = true;
+            checkBoxIsAvailable.Size = new Size(100, 37);
+            checkBoxIsAvailable.TabIndex = 3;
+            checkBoxIsAvailable.Text = "Available";
+            checkBoxIsAvailable.UseVisualStyleBackColor = true;
             // 
             // categorycb
             // 
@@ -531,6 +546,7 @@
             categorycb.Hint = "Category";
             categorycb.IntegralHeight = false;
             categorycb.ItemHeight = 29;
+            categorycb.Items.AddRange(new object[] { "Category" });
             categorycb.Location = new Point(34, 56);
             categorycb.MaxDropDownItems = 4;
             categorycb.MouseState = MaterialSkin.MouseState.OUT;
@@ -539,6 +555,7 @@
             categorycb.StartIndex = 0;
             categorycb.TabIndex = 2;
             categorycb.UseTallSize = false;
+            categorycb.SelectedIndexChanged += categorycb_SelectedIndexChanged;
             // 
             // materialLabel2
             // 
@@ -651,15 +668,16 @@
         private MaterialSkin.Controls.MaterialCard materialCard3;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialComboBox categorycb;
-        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox1;
-        private MaterialSkin.Controls.MaterialMultiLineTextBox2 materialMultiLineTextBox21;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox21;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox23;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox22;
+        private MaterialSkin.Controls.MaterialCheckbox checkBoxIsAvailable;
+        private MaterialSkin.Controls.MaterialMultiLineTextBox2 txtProductDescription;
+        private MaterialSkin.Controls.MaterialTextBox2 txtProductName;
+        private MaterialSkin.Controls.MaterialTextBox2 txtPrice;
+        private MaterialSkin.Controls.MaterialTextBox2 txtSKU;
         private MaterialSkin.Controls.MaterialFloatingActionButton materialFloatingActionButton1;
         private MaterialSkin.Controls.MaterialButton materialButton2;
         private MaterialSkin.Controls.MaterialButton materialButton1;
         private MaterialSkin.Controls.MaterialMaskedTextBox materialMaskedTextBox1;
         private DataGridView dataGridView1;
+        private MaterialSkin.Controls.MaterialLabel CategoryIDbind;
     }
 }
