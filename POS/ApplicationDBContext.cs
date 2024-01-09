@@ -16,11 +16,7 @@ namespace POS
 
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options ):base(options)
         {
-            Users = Set<User>();
-            UserRoles = Set<UserRole>();
-            Categories = Set<Category>();
-            Products = Set<Product>();
-            Rights = Set<Right>();
+          
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,12 +28,12 @@ namespace POS
 
 
         }
-        public DbSet<User> Users { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Product> Products  { get; set; }
+        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<UserRole> UserRoles { get; set; } = null!;
+        public DbSet<Category> Categories { get; set; } = null!;
+        public DbSet<Product> Products { get; set; } = null!;
 
-        public DbSet<Right> Rights { get; set; }
+        public DbSet<Right> Rights { get; set; } = null!;
 
 
 

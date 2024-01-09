@@ -14,5 +14,7 @@ namespace POS.Contracts
         Task Delete(Category category);
 
         bool CheckDuplicate(Category category);
+
+        Task<List<Category>> GetAllCategory();
     }
 }

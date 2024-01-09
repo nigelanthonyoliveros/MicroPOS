@@ -18,13 +18,13 @@ namespace POS
         {
             InitializeComponent();
             this.ActivateSkin();
-
-            this.ControlBox = false;
+            this.ShowInTaskbar = false;
+            this.ControlBox = true;
         }
 
         private void Loading_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

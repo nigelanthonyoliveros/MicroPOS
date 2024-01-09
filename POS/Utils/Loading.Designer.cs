@@ -50,7 +50,8 @@
             materialLabel1.AutoSize = true;
             materialLabel1.Depth = 0;
             materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel1.Location = new Point(138, 30);
+            materialLabel1.LiveSetting = System.Windows.Forms.Automation.AutomationLiveSetting.Polite;
+            materialLabel1.Location = new Point(132, 24);
             materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel1.Name = "materialLabel1";
             materialLabel1.Size = new Size(135, 19);
@@ -65,8 +66,11 @@
             ControlBox = false;
             Controls.Add(materialLabel1);
             Controls.Add(pictureBox1);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            FormStyle = FormStyles.ActionBar_None;
             Name = "Loading";
-            Text = "Loading";
+            Padding = new Padding(3, 24, 3, 3);
+            ShowInTaskbar = false;
             Load += Loading_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

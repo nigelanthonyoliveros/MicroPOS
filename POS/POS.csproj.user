@@ -4,7 +4,7 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Loading.cs">
+    <Compile Update="Utils\Loading.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

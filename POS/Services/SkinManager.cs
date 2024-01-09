@@ -19,8 +19,8 @@ namespace POS.Services
             materialSkinManager.ColorScheme = new ColorScheme(
                 Primary.Blue800, //primary
                 Primary.BlueGrey900, //dark primary
-                Primary.BlueGrey500, //light primary
-                Accent.LightBlue200, //dark primary
+                Primary.BlueGrey200, //light primary
+                Accent.Orange400, //dark primary
                 TextShade.WHITE      // text shade
                 );
 

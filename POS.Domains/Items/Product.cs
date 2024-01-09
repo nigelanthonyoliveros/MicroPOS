@@ -28,6 +28,8 @@ namespace POS.Domains.Items
         [Required]
         public decimal ProductPrice { get; set; }
 
+        [Column("isAvailable")]
+        public bool Available { get; set; } = true;
 
 
 

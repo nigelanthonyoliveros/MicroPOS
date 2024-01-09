@@ -17,8 +17,9 @@ namespace POS
         private readonly IPOSService pOSService;
         private readonly ApplicationDBContext dBContext;
         private readonly ICategoryRepository _categoryRepository;
-        Loading loadingSplash = new Loading() {
-            Dock = DockStyle.Fill, 
+        Loading loadingSplash = new Loading()
+        {
+            Dock = DockStyle.Fill,
             StartPosition = FormStartPosition.CenterScreen,
             TopLevel = true
         };
@@ -26,7 +27,7 @@ namespace POS
         public MainForm(ILogger<MainForm> logger, IPOSService pOSService, ApplicationDBContext dBContext, ICategoryRepository categoriesRepository)
         {
             InitializeComponent();
-         
+
             this.ActivateSkin(MaterialSkinManager.Themes.LIGHT); // Sets the initial theme of the app to light
 
             dynamic confobject = ConfigurationManager.GetSection("appSettings");
@@ -37,7 +38,11 @@ namespace POS
             this._categoryRepository=categoriesRepository;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
+        {
+            await Form1_LoadAsync(sender, e);
+        }
+        private async Task Form1_LoadAsync(object sender, EventArgs e)
         {
             _logger.LogTrace("Form1 has been loaded");
             #region Random Value 
@@ -61,8 +66,8 @@ namespace POS
             #endregion
 
 
-            _categoryRepository.Add(new Category() { Name = "Perishable", Description = "Perishable items" });
-       
+          await  _categoryRepository.Add(new Category() { Name = "Perishable", Description = "Perishable items" });
+
 
 
 
@@ -93,6 +98,10 @@ namespace POS
             // Add the series to the chart
             SalesChart.Series.Add(series);
             SalesChart.Series.Add(series1);
+         
+            categorycb.DataSource = await _categoryRepository.GetAllCategory();
+            categorycb.DisplayMember = "Name";
+            categorycb.ValueMember = "CategoryID";
         }
 
 
@@ -104,7 +113,7 @@ namespace POS
             }
             loadingSplash.TopMost = true;
             loadingSplash.Show();
-    
+
 
             if (darkModeswitch.CheckState == CheckState.Unchecked)
             {
@@ -121,6 +130,6 @@ namespace POS
             loadingSplash.Hide();
         }
 
-       
+        
     }
 }

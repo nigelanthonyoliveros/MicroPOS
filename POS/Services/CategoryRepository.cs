@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using POS.Contracts;
 using POS.Domains.Categories;
 using System;
@@ -80,6 +81,12 @@ namespace POS.Services
             {
                 throw new InvalidOperationException("There is no record to update.");
             }
+        }
+
+        public async Task<List<Category>> GetAllCategory()
+        {
+
+            return await context.Categories.ToListAsync();
         }
     }
 }
