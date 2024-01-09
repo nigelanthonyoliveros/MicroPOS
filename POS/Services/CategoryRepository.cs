@@ -9,15 +9,20 @@ using System.Threading.Tasks;
 
 namespace POS.Services
 {
-    public class CategoriesService : ICategoriesService
+    public class CategoryRepository : ICategoryRepository
     {
-        private readonly ILogger<CategoriesService> logger;
+        private readonly ILogger<CategoryRepository> logger;
         private readonly ApplicationDBContext context;
 
-        public CategoriesService(ILogger<CategoriesService> logger,ApplicationDBContext context) {
+        public CategoryRepository(ILogger<CategoryRepository> logger,ApplicationDBContext context) {
             this.logger=logger;
             this.context=context;
         }
+        /// <summary>
+        /// Adds a new category to the database.
+        /// </summary>
+        /// <param name="category">The category to be added.</param>
+        /// <returns>A task representing the asynchronous operation.</returns>
         public async Task Add(Category category )
         {
             if (!CheckDuplicate(category))

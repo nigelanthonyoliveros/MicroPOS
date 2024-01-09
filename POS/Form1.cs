@@ -2,10 +2,12 @@
 using MaterialSkin;
 using MaterialSkin.Controls;
 using Microsoft.Extensions.Logging;
+using Microsoft.VisualBasic;
 using POS.Contracts;
 using POS.Domains.Categories;
 using POS.Services;
 using System.Configuration;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace POS
 {
@@ -14,20 +16,25 @@ namespace POS
         private readonly ILogger<MainForm> _logger;
         private readonly IPOSService pOSService;
         private readonly ApplicationDBContext dBContext;
-        private readonly ICategoriesService categoriesService;
+        private readonly ICategoryRepository _categoryRepository;
+        Loading loadingSplash = new Loading() {
+            Dock = DockStyle.Fill, 
+            StartPosition = FormStartPosition.CenterScreen,
+            TopLevel = true
+        };
 
-        public MainForm(ILogger<MainForm> logger, IPOSService pOSService, ApplicationDBContext dBContext, ICategoriesService categoriesService)
+        public MainForm(ILogger<MainForm> logger, IPOSService pOSService, ApplicationDBContext dBContext, ICategoryRepository categoriesRepository)
         {
             InitializeComponent();
-
-            this.ActivateSkin();
+         
+            this.ActivateSkin(MaterialSkinManager.Themes.LIGHT); // Sets the initial theme of the app to light
 
             dynamic confobject = ConfigurationManager.GetSection("appSettings");
 
             this._logger = logger;
             this.pOSService=pOSService;
             this.dBContext=dBContext;
-            this.categoriesService=categoriesService;
+            this._categoryRepository=categoriesRepository;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -38,6 +45,7 @@ namespace POS
             materialProgressBar1.Style = ProgressBarStyle.Marquee;
             materialProgressBar1.MarqueeAnimationSpeed = 5000;
             //materialProgressBar1.MarqueeAnimationSpeed = 1;
+
 
 
             var randomvalue = (double)new Random().Next(1, 10000);
@@ -53,13 +61,66 @@ namespace POS
             #endregion
 
 
-            categoriesService.Add(new Category() { Name = "Perishable", Description = "Perishable items" });
+            _categoryRepository.Add(new Category() { Name = "Perishable", Description = "Perishable items" });
+       
 
 
+
+            // Example data
+            var salesData = new int[] { 4000, 15000, 4000, 4311, 4211, 1000 };
+            var salesData1 = new int[] { 4000, 15000, 4000, 4311, 4211, 1000, 3200 };
+
+            // Clear existing data
+            SalesChart.Series.Clear();
+
+            // Add a new series
+            Series series = new Series("SalesData");
+            Series series1 = new Series("SalesData1");
+
+            series.ChartType = SeriesChartType.Column; // Choose the chart type
+
+            // Add data points
+            for (int i = 0; i < salesData.Length; i++)
+            {
+                series.Points.AddXY($"Month {i + 1}", salesData[i]);
+            }
+            for (int i = 0; i < salesData1.Length; i++)
+            {
+                series.Points.AddXY($"Month {i + 1}", salesData1[i]);
+            }
+
+
+            // Add the series to the chart
+            SalesChart.Series.Add(series);
+            SalesChart.Series.Add(series1);
         }
 
 
+        private async void DarkModeToggle(object sender, EventArgs e)
+        {
+            if (loadingSplash.Visible == true)
+            {
+                loadingSplash.Hide();
+            }
+            loadingSplash.TopMost = true;
+            loadingSplash.Show();
+    
+
+            if (darkModeswitch.CheckState == CheckState.Unchecked)
+            {
+                this.ActivateSkin(MaterialSkinManager.Themes.LIGHT);
 
 
+            }
+            else
+            {
+                this.ActivateSkin(MaterialSkinManager.Themes.DARK);
+            }
+
+            await Task.Delay(500);
+            loadingSplash.Hide();
+        }
+
+       
     }
 }

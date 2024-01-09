@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "77AWQoO86D99ib8DZoZCCASPxadFi4QqBFgM35qKZKulgA4zGKcxJvuSpC3Z22YPYeau4BFLQL99ZmnLGzUGrg==",
+  "dgSpecHash": "33FD1EFwKrAifFl8RuoTE4trCsjUuHza7jEp0/Zpvk8ecuZfIPxQWvwHbhQMEwxBrGUgiIftVhTtGoFf8DThAw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Nigel Anthony\\Desktop\\Repositories\\C#\\POS\\POS\\POS.csproj",
   "expectedPackageFiles": [
@@ -68,7 +68,8 @@
     "C:\\Users\\Nigel Anthony\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
     "C:\\Users\\Nigel Anthony\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
     "C:\\Users\\Nigel Anthony\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512",
-    "C:\\Users\\Nigel Anthony\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
+    "C:\\Users\\Nigel Anthony\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
+    "C:\\Users\\Nigel Anthony\\.nuget\\packages\\winforms.datavisualization\\1.9.1\\winforms.datavisualization.1.9.1.nupkg.sha512"
   ],
   "logs": []
 }

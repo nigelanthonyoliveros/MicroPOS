@@ -10,12 +10,12 @@ namespace POS.Services
 {
     public static class SkinManager
     {
-        public static void ActivateSkin(this MaterialForm form)
+        public static void ActivateSkin(this MaterialForm form, MaterialSkinManager.Themes theme = MaterialSkinManager.Themes.LIGHT)
         {
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(form);
             materialSkinManager.EnforceBackcolorOnAllComponents = true;
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.Theme =theme ;
             materialSkinManager.ColorScheme = new ColorScheme(
                 Primary.Blue800, //primary
                 Primary.BlueGrey900, //dark primary

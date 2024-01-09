@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace POS.Contracts
 {
-    public interface ICategoriesService
+    public interface ICategoryRepository
     {
         Task Add(Category category);
         Task Update(Category category);

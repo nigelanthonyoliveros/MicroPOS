@@ -20,7 +20,7 @@ namespace POS
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            Application.SetHighDpiMode(HighDpiMode.DpiUnaware);
             Application.SetDefaultFont(new System.Drawing.Font("Segoe UI", 12, FontStyle.Bold));
             Application.EnableVisualStyles();
             //TODO: Create a DI and register services to be used in application lifetime
@@ -39,11 +39,6 @@ namespace POS
     }
         public static IServiceProvider? ServiceProvider { get; private set; }
 
-
-        /// <summary>
-        /// Create a host builder to build the service provider
-        /// </summary>
-        /// <returns></returns>
         static IHostBuilder CreateHostBuilder()
         {
             return Host.CreateDefaultBuilder()
@@ -66,7 +61,7 @@ namespace POS
 
 
                     services.AddScoped<IPOSService, POSService>();
-                    services.AddScoped<ICategoriesService, CategoriesService>();
+                    services.AddScoped<ICategoryRepository, CategoryRepository>();
 
                     services.AddTransient<MainForm>();
                 });

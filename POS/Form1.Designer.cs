@@ -29,9 +29,14 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             DashboardTabControl = new MaterialSkin.Controls.MaterialTabControl();
             homeTab = new TabPage();
+            materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
+            SalesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             materialCard2 = new MaterialSkin.Controls.MaterialCard();
             materialProgressBar2 = new MaterialSkin.Controls.MaterialProgressBar();
             materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
@@ -41,12 +46,15 @@
             inventoryTab = new TabPage();
             salesTab = new TabPage();
             miscTab = new TabPage();
+            darkModeswitch = new MaterialSkin.Controls.MaterialSwitch();
             usersTab = new TabPage();
             imageList1 = new ImageList(components);
             DashboardTabControl.SuspendLayout();
             homeTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)SalesChart).BeginInit();
             materialCard2.SuspendLayout();
             materialCard1.SuspendLayout();
+            miscTab.SuspendLayout();
             SuspendLayout();
             // 
             // DashboardTabControl
@@ -68,22 +76,52 @@
             DashboardTabControl.Name = "DashboardTabControl";
             DashboardTabControl.SelectedIndex = 0;
             DashboardTabControl.ShowToolTips = true;
-            DashboardTabControl.Size = new Size(1021, 554);
+            DashboardTabControl.Size = new Size(1164, 638);
             DashboardTabControl.TabIndex = 0;
             // 
             // homeTab
             // 
+            homeTab.Controls.Add(materialDivider1);
+            homeTab.Controls.Add(SalesChart);
             homeTab.Controls.Add(materialCard2);
             homeTab.Controls.Add(materialCard1);
             homeTab.ImageKey = "home_FILL0_wght400_GRAD0_opsz24.png";
             homeTab.Location = new Point(4, 42);
             homeTab.Name = "homeTab";
             homeTab.Padding = new Padding(3);
-            homeTab.Size = new Size(1013, 508);
+            homeTab.Size = new Size(1156, 592);
             homeTab.TabIndex = 0;
             homeTab.Text = "Home";
             homeTab.ToolTipText = "Home";
             homeTab.UseVisualStyleBackColor = true;
+            // 
+            // materialDivider1
+            // 
+            materialDivider1.BackColor = Color.FromArgb(30, 0, 0, 0);
+            materialDivider1.Depth = 0;
+            materialDivider1.Location = new Point(27, 165);
+            materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialDivider1.Name = "materialDivider1";
+            materialDivider1.Size = new Size(1126, 10);
+            materialDivider1.TabIndex = 3;
+            materialDivider1.Text = "materialDivider1";
+            // 
+            // SalesChart
+            // 
+            chartArea1.Name = "ChartArea1";
+            SalesChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            SalesChart.Legends.Add(legend1);
+            SalesChart.Location = new Point(27, 181);
+            SalesChart.Name = "SalesChart";
+            SalesChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            SalesChart.Series.Add(series1);
+            SalesChart.Size = new Size(796, 370);
+            SalesChart.TabIndex = 2;
+            SalesChart.Text = "chart1";
             // 
             // materialCard2
             // 
@@ -175,7 +213,7 @@
             inventoryTab.Location = new Point(4, 42);
             inventoryTab.Name = "inventoryTab";
             inventoryTab.Padding = new Padding(3);
-            inventoryTab.Size = new Size(1013, 508);
+            inventoryTab.Size = new Size(1156, 592);
             inventoryTab.TabIndex = 1;
             inventoryTab.Text = "Inventory";
             inventoryTab.ToolTipText = "Inventory";
@@ -186,27 +224,45 @@
             salesTab.ImageKey = "payments_FILL0_wght400_GRAD0_opsz24.png";
             salesTab.Location = new Point(4, 42);
             salesTab.Name = "salesTab";
-            salesTab.Size = new Size(1013, 508);
+            salesTab.Size = new Size(1156, 592);
             salesTab.TabIndex = 2;
             salesTab.Text = "Sales";
             salesTab.UseVisualStyleBackColor = true;
             // 
             // miscTab
             // 
+            miscTab.Controls.Add(darkModeswitch);
             miscTab.ImageKey = "category_FILL0_wght400_GRAD0_opsz24.png";
             miscTab.Location = new Point(4, 42);
             miscTab.Name = "miscTab";
-            miscTab.Size = new Size(1013, 508);
+            miscTab.Size = new Size(1156, 592);
             miscTab.TabIndex = 3;
             miscTab.Text = "Miscellenous";
             miscTab.UseVisualStyleBackColor = true;
+            // 
+            // darkModeswitch
+            // 
+            darkModeswitch.AutoSize = true;
+            darkModeswitch.BackgroundImage = (Image)resources.GetObject("darkModeswitch.BackgroundImage");
+            darkModeswitch.Depth = 0;
+            darkModeswitch.Location = new Point(24, 22);
+            darkModeswitch.Margin = new Padding(0);
+            darkModeswitch.MouseLocation = new Point(-1, -1);
+            darkModeswitch.MouseState = MaterialSkin.MouseState.HOVER;
+            darkModeswitch.Name = "darkModeswitch";
+            darkModeswitch.Ripple = true;
+            darkModeswitch.Size = new Size(135, 37);
+            darkModeswitch.TabIndex = 2;
+            darkModeswitch.Text = "Dark Mode";
+            darkModeswitch.UseVisualStyleBackColor = true;
+            darkModeswitch.CheckedChanged += DarkModeToggle;
             // 
             // usersTab
             // 
             usersTab.ImageKey = "manage_accounts_FILL0_wght400_GRAD0_opsz24.png";
             usersTab.Location = new Point(4, 42);
             usersTab.Name = "usersTab";
-            usersTab.Size = new Size(1013, 508);
+            usersTab.Size = new Size(1156, 592);
             usersTab.TabIndex = 4;
             usersTab.Text = "Users";
             usersTab.UseVisualStyleBackColor = true;
@@ -230,7 +286,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1027, 621);
+            ClientSize = new Size(1170, 705);
             Controls.Add(DashboardTabControl);
             DrawerShowIconsWhenHidden = true;
             DrawerTabControl = DashboardTabControl;
@@ -241,10 +297,13 @@
             Load += Form1_Load;
             DashboardTabControl.ResumeLayout(false);
             homeTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)SalesChart).EndInit();
             materialCard2.ResumeLayout(false);
             materialCard2.PerformLayout();
             materialCard1.ResumeLayout(false);
             materialCard1.PerformLayout();
+            miscTab.ResumeLayout(false);
+            miscTab.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -263,5 +322,8 @@
         private MaterialSkin.Controls.MaterialCard materialCard2;
         private MaterialSkin.Controls.MaterialProgressBar materialProgressBar2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart SalesChart;
+        private MaterialSkin.Controls.MaterialDivider materialDivider1;
+        private MaterialSkin.Controls.MaterialSwitch darkModeswitch;
     }
 }

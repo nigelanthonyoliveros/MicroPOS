@@ -72,3 +72,7 @@ C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS\bin\Debug\net6.0-windows\
 C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS\bin\Debug\net6.0-windows\POS.Domains.dll
 C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS\bin\Debug\net6.0-windows\POS.Domains.pdb
 C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS\obj\Debug\net6.0-windows\POS.sourcelink.json
+C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS\bin\Debug\net6.0-windows\WinForms.DataVisualization.Utilities.dll
+C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS\bin\Debug\net6.0-windows\WinForms.DataVisualization.dll
+C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS\obj\Debug\net6.0-windows\POS.Properties.Resources.resources
+C:\Users\Nigel Anthony\Desktop\Repositories\C#\POS\POS\obj\Debug\net6.0-windows\POS.Loading.resources
