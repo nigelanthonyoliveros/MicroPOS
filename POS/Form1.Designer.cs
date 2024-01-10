@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             DashboardTabControl = new MaterialSkin.Controls.MaterialTabControl();
             homeTab = new TabPage();
@@ -125,17 +125,17 @@
             // 
             // SalesChart
             // 
-            chartArea2.Name = "ChartArea1";
-            SalesChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            SalesChart.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            SalesChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            SalesChart.Legends.Add(legend1);
             SalesChart.Location = new Point(27, 181);
             SalesChart.Name = "SalesChart";
             SalesChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            SalesChart.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            SalesChart.Series.Add(series1);
             SalesChart.Size = new Size(795, 371);
             SalesChart.TabIndex = 2;
             SalesChart.Text = "chart1";
@@ -248,6 +248,7 @@
             datatableForProducts.RowTemplate.Height = 29;
             datatableForProducts.Size = new Size(806, 509);
             datatableForProducts.TabIndex = 2;
+            datatableForProducts.SelectionChanged += datatableForProducts_CellContentClick;
             // 
             // materialMaskedTextBox1
             // 

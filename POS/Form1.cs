@@ -26,7 +26,7 @@ namespace POS
             TopLevel = true
         };
 
-        public  MainForm(ILogger<MainForm> logger, POSService pOSService, ApplicationDBContext dBContext)
+        public MainForm(ILogger<MainForm> logger, POSService pOSService, ApplicationDBContext dBContext)
         {
             InitializeComponent();
 
@@ -37,7 +37,7 @@ namespace POS
             this._logger = logger;
             this.pOSService=pOSService;
             this.dBContext=dBContext;
-           
+
         }
 
         private async void Form1_Load(object sender, EventArgs e)
@@ -114,7 +114,7 @@ namespace POS
 
         private async Task RefreshData()
         {
-              datatableForProducts.DataSource= await pOSService.GetAllAvailableProducts(false);
+            datatableForProducts.DataSource= await pOSService.GetAllAvailableProducts(false);
         }
         private async void DarkModeToggle(object sender, EventArgs e)
         {
@@ -156,7 +156,7 @@ namespace POS
             };
 
             await pOSService.AddProduct(product);
-           await RefreshData();
+            await RefreshData();
         }
 
         private void categorycb_SelectedIndexChanged(object sender, EventArgs e)
@@ -172,6 +172,16 @@ namespace POS
 
         }
 
-        
+
+        private void datatableForProducts_CellContentClick(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection selection
+              = datatableForProducts.SelectedRows;
+
+            txtProductName.Text = selection[0].ToString();
+
+
+
+        }
     }
 }
