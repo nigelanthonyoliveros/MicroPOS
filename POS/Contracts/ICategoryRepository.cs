@@ -15,6 +15,7 @@ namespace POS.Contracts
 
         bool CheckDuplicate(Category category);
 
-        Task<List<Category>> GetAllCategory();
+        Task<Category?> GetById(Guid id);
+        Task<IEnumerable<Category>> GetAllCategory();
     }
 }

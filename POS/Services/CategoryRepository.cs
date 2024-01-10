@@ -52,10 +52,7 @@ namespace POS.Services
         public bool CheckDuplicate(Category category)
         {
             return context.Categories
-                                .Where(
-                                      cat => cat.Name
-                                                .ToLower()
-                                                .Contains(category.Name.ToLower())
+            .Where(  cat => cat.Name.ToLower().Contains(category.Name.ToLower())
                                       )
                                 .Count()>0;
         }
@@ -83,10 +80,17 @@ namespace POS.Services
             }
         }
 
-        public async Task<List<Category>> GetAllCategory()
+        public async Task<IEnumerable<Category>> GetAllCategory()
         {
 
             return await context.Categories.ToListAsync();
         }
+
+        public async Task<Category?> GetById(Guid id)
+        {
+           return await context.Categories
+                    .FirstOrDefaultAsync(cat => cat.CategoryID == id);
+            
+        }   
     }
 }

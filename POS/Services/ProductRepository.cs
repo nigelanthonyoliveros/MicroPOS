@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 using POS.Contracts;
 using POS.Domains.Items;
@@ -26,14 +27,46 @@ namespace POS.Services
              await  context.SaveChangesAsync();
         }
 
-        public Task Delete(Product product)
+        public bool CheckDuplicate(Product product)
         {
-            throw new NotImplementedException();
+            return  context.Products
+                   .Any( pro => pro.ProductName.ToLower() == product.ProductName.Trim().ToLower() );
         }
 
-        public Task<IEnumerable<Product>> GetAllAsync()
+        public async Task Delete(Product product)
         {
-            throw new NotImplementedException();
+            if (CheckDuplicate(product))
+            {
+                context.Entry(product).State =  EntityState.Deleted;
+                context.Products.Remove(product);
+                await context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new InvalidOperationException("Product doesn't exists!");
+            }
+        }
+
+        /// <summary>
+        /// Returns all the available products ONLY when you provide the parameter available = true otherwise returns the all the products regardless of it's availability
+        /// default is true
+        /// </summary>
+        /// <param name="available"></param>
+        /// <returns>Task</returns>
+        public async Task<IEnumerable<Product>> GetAllAsync
+            (bool available = true)
+        {
+           if(available)
+            {
+                return await context.Products
+               .Where(pro => pro.Available == true)
+               .ToListAsync();
+            }
+           else
+            {
+                return await context.Products.ToListAsync();
+            }
+           
         }
 
         public Task<Product> GetById(Guid id)
@@ -41,9 +74,19 @@ namespace POS.Services
             return (Task<Product>)context.Products.Where(x => x.ProductID == id);
         }
 
-        public Task Update(Product product)
+        public async Task Update(Product product)
         {
-            throw new NotImplementedException();
+            dynamic existingProduct = GetById(product.ProductID);
+            if(existingProduct != null)
+            {
+               context.Entry(product).State = EntityState.Modified;
+                await context.SaveChangesAsync();
+
+            }
+            else {
+
+                throw new InvalidOperationException("Product does not exists!");
+            }
         }
     }
 }

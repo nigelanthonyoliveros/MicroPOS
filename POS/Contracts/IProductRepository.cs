@@ -12,7 +12,9 @@ namespace POS.Contracts
         Task Add(Product product);
         Task Update(Product product);
         Task Delete(Product product);
-        Task<IEnumerable<Product>> GetAllAsync();
+        Task<IEnumerable<Product>> GetAllAsync(bool available = true);
         Task<Product> GetById(Guid id);
+
+        bool CheckDuplicate(Product product);
     }
 }

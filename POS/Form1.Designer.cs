@@ -44,7 +44,7 @@
             materialProgressBar1 = new MaterialSkin.Controls.MaterialProgressBar();
             lblSalesToday = new MaterialSkin.Controls.MaterialLabel();
             inventoryTab = new TabPage();
-            dataGridView1 = new DataGridView();
+            datatableForProducts = new DataGridView();
             materialMaskedTextBox1 = new MaterialSkin.Controls.MaterialMaskedTextBox();
             materialCard3 = new MaterialSkin.Controls.MaterialCard();
             CategoryIDbind = new MaterialSkin.Controls.MaterialLabel();
@@ -69,7 +69,7 @@
             materialCard2.SuspendLayout();
             materialCard1.SuspendLayout();
             inventoryTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)datatableForProducts).BeginInit();
             materialCard3.SuspendLayout();
             miscTab.SuspendLayout();
             SuspendLayout();
@@ -226,7 +226,7 @@
             // 
             // inventoryTab
             // 
-            inventoryTab.Controls.Add(dataGridView1);
+            inventoryTab.Controls.Add(datatableForProducts);
             inventoryTab.Controls.Add(materialMaskedTextBox1);
             inventoryTab.Controls.Add(materialCard3);
             inventoryTab.ImageKey = "store_FILL0_wght400_GRAD0_opsz24.png";
@@ -239,15 +239,15 @@
             inventoryTab.ToolTipText = "Inventory";
             inventoryTab.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // datatableForProducts
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(526, 92);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(806, 509);
-            dataGridView1.TabIndex = 2;
+            datatableForProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            datatableForProducts.Location = new Point(526, 92);
+            datatableForProducts.Name = "datatableForProducts";
+            datatableForProducts.RowHeadersWidth = 51;
+            datatableForProducts.RowTemplate.Height = 29;
+            datatableForProducts.Size = new Size(806, 509);
+            datatableForProducts.TabIndex = 2;
             // 
             // materialMaskedTextBox1
             // 
@@ -392,7 +392,7 @@
             materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             materialButton1.UseAccentColor = true;
             materialButton1.UseVisualStyleBackColor = true;
-            materialButton1.Click += materialButton1_Click;
+            materialButton1.Click += materialButton1_ClickAsync;
             // 
             // txtPrice
             // 
@@ -639,7 +639,7 @@
             materialCard1.ResumeLayout(false);
             materialCard1.PerformLayout();
             inventoryTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)datatableForProducts).EndInit();
             materialCard3.ResumeLayout(false);
             materialCard3.PerformLayout();
             miscTab.ResumeLayout(false);
@@ -677,7 +677,7 @@
         private MaterialSkin.Controls.MaterialButton materialButton2;
         private MaterialSkin.Controls.MaterialButton materialButton1;
         private MaterialSkin.Controls.MaterialMaskedTextBox materialMaskedTextBox1;
-        private DataGridView dataGridView1;
+        private DataGridView datatableForProducts;
         private MaterialSkin.Controls.MaterialLabel CategoryIDbind;
     }
 }

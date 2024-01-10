@@ -31,10 +31,14 @@ namespace POS.Domains.Items
         [Column("isAvailable")]
         public bool Available { get; set; } = true;
 
+        public DateTime Created { get; set; }   
+
 
 
         [ForeignKey("Category")]
         public Guid CategoryID { get; set; }
         public Category? Category { get; set; }
+
+        
     }
 }

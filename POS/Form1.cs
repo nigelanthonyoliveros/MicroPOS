@@ -16,10 +16,9 @@ namespace POS
     public partial class MainForm : MaterialForm
     {
         private readonly ILogger<MainForm> _logger;
-        private readonly IPOSService pOSService;
+        private readonly POSService pOSService;
         private readonly ApplicationDBContext dBContext;
-        private readonly ICategoryRepository _categoryRepository;
-        private readonly IProductRepository productRepository;
+
         Loading loadingSplash = new Loading()
         {
             Dock = DockStyle.Fill,
@@ -27,7 +26,7 @@ namespace POS
             TopLevel = true
         };
 
-        public MainForm(ILogger<MainForm> logger, IPOSService pOSService, ApplicationDBContext dBContext, ICategoryRepository categoriesRepository, IProductRepository productRepository)
+        public  MainForm(ILogger<MainForm> logger, POSService pOSService, ApplicationDBContext dBContext)
         {
             InitializeComponent();
 
@@ -38,13 +37,12 @@ namespace POS
             this._logger = logger;
             this.pOSService=pOSService;
             this.dBContext=dBContext;
-            this._categoryRepository=categoriesRepository;
-            this.productRepository=productRepository;
+           
         }
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-           
+
             await Form1_LoadAsync(sender, e);
         }
         private async Task Form1_LoadAsync(object sender, EventArgs e)
@@ -58,7 +56,7 @@ namespace POS
             //materialProgressBar1.MarqueeAnimationSpeed = 1;
 
 
-            
+
             var randomvalue = (double)new Random().Next(1, 10000);
             var randomvalue2 = (double)new Random().Next(1, 10000);
 
@@ -72,7 +70,7 @@ namespace POS
             #endregion
 
 
-            await _categoryRepository.Add(new Category() { Name = "Perishable", Description = "Perishable items" });
+            //await pOSService(new Category() { Name = "Perishable", Description = "Perishable items" });
 
 
 
@@ -105,15 +103,19 @@ namespace POS
             SalesChart.Series.Add(series);
             SalesChart.Series.Add(series1);
 
-            categorycb.DataSource = await _categoryRepository.GetAllCategory();
-            
+            categorycb.DataSource = await pOSService.GetAllCategoriesAsync();
+
             categorycb.DisplayMember = "Name";
             categorycb.ValueMember = "CategoryID";
             categorycb.SelectedText = "Category";
             categorycb.SelectedValue = "00000000-0000-0000-0000-000000000000";
+            await RefreshData();
         }
 
-
+        private async Task RefreshData()
+        {
+              datatableForProducts.DataSource= await pOSService.GetAllAvailableProducts(false);
+        }
         private async void DarkModeToggle(object sender, EventArgs e)
         {
             if (loadingSplash.Visible == true)
@@ -139,11 +141,12 @@ namespace POS
             loadingSplash.Hide();
         }
 
-        private void materialButton1_Click(object sender, EventArgs e)
+        private async void materialButton1_ClickAsync(object sender, EventArgs e)
         {
-            UserConfirmMessageBox uc = new UserConfirmMessageBox("Are you sure you want to add this product?");
+            //UserConfirmMessageBox uc = new UserConfirmMessageBox("Are you sure you want to add this product?");
 
-            Product product = new Product {
+            Product product = new Product
+            {
                 ProductName = txtProductName.Text,
                 ProductDescription = txtProductDescription.Text,
                 Available= checkBoxIsAvailable.Checked,
@@ -152,12 +155,13 @@ namespace POS
                 CategoryID = new Guid(categorycb.SelectedValue.ToString() ?? ""),
             };
 
-            productRepository.Add(product); 
+            await pOSService.AddProduct(product);
+           await RefreshData();
         }
 
         private void categorycb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(categorycb.SelectedValue is null)
+            if (categorycb.SelectedValue is null)
             {
                 CategoryIDbind.Text = string.Empty;
             }
@@ -165,7 +169,9 @@ namespace POS
             {
                 CategoryIDbind.Text = categorycb.SelectedValue.ToString();
             }
-            
+
         }
+
+        
     }
 }

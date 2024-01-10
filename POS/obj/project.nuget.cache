@@ -1,12 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "leFIVAHAQa3Aml2WZ1mg7unnJPOzZFATGhF59gpf3OQv2EmfHSkU6X+hjMtXuvLcr3xHvdOzmcOCaajCqM6Z6g==",
+  "dgSpecHash": "/ElfKMYJuDAjKJx8OTX/6dME4iFtFCYMape+Hrw7PlQj3xNUyioHXwrQB94ZibamfBIT0d5PHKMPrRjgZY/Jeg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Nigel Anthony\\Desktop\\Repositories\\C#\\POS\\POS\\POS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nigel Anthony\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\Nigel Anthony\\.nuget\\packages\\materialdesigncolors\\2.1.4\\materialdesigncolors.2.1.4.nupkg.sha512",
-    "C:\\Users\\Nigel Anthony\\.nuget\\packages\\materialdesignthemes\\4.9.0\\materialdesignthemes.4.9.0.nupkg.sha512",
     "C:\\Users\\Nigel Anthony\\.nuget\\packages\\materialskin.2\\2.3.1\\materialskin.2.2.3.1.nupkg.sha512",
     "C:\\Users\\Nigel Anthony\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Nigel Anthony\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
@@ -54,7 +52,6 @@
     "C:\\Users\\Nigel Anthony\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Nigel Anthony\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Nigel Anthony\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
-    "C:\\Users\\Nigel Anthony\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512",
     "C:\\Users\\Nigel Anthony\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Nigel Anthony\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\Nigel Anthony\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.1\\system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",

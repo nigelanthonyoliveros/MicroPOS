@@ -25,7 +25,12 @@ namespace POS
                  //.ValueGeneratedOnAddOrUpdate()
                  //.Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Save)
                  .HasDefaultValueSql("getdate()");
-
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Created)
+                .HasDefaultValueSql("getdate()");
+            //modelBuilder.Entity<Product>()
+            //    .HasKey(p=>p.ProductID)
+                
 
         }
         public DbSet<User> Users { get; set; } = null!;

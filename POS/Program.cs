@@ -60,7 +60,7 @@ namespace POS
                     #endregion
 
 
-                    services.AddScoped<IPOSService, POSService>();
+                    services.AddTransient< POSService>();
                     services.AddScoped<ICategoryRepository, CategoryRepository>();
                     services.AddScoped<IProductRepository, ProductRepository>();
 

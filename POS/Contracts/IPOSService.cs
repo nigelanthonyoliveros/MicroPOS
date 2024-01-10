@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace POS.Contracts
 {
-    public interface IPOSService
+    public interface IPOSService : IDisposable
     {
-        virtual string PrintDate()
-        
-        {
-            return DateTime.Now.ToString("O")+" From AutoImplementation";
-        }
+       
     }
 }
